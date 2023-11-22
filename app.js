@@ -17,7 +17,7 @@ app.use(express.json());
 
 // connect to MongoDB through mongoose
 try {
-  await mongoose.connect("mongodb://127.0.0.1:27017/recordShop");
+  await mongoose.connect("mongodb://127.0.0.1:27017/testMongodb");
   console.log("connection established successfully!😉");
 } catch (err) {
   console.log(err);
