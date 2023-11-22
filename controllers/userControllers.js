@@ -60,7 +60,7 @@ export const register = async (req, res, next) => {
 
     const newUser = await User.create({...req.body, password: hashedPassword});
 
-    res.status(200).send(newUser);
+    res.status(200).json(newUser);
   } catch (err) {
     next(err);
   }
