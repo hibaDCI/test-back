@@ -16,18 +16,18 @@ const app = express();
 app.use(express.json());
 
 // connect to MongoDB through mongoose
-try {
-  await mongoose.connect(
-    "mongodb+srv://hiba123:hiba123@cluster0.jz6ge.mongodb.net/hellotest"
-  );
-  console.log("connection established successfully!😉");
-} catch (err) {
-  console.log(err);
-}
-// mongoose
-//   .connect(`mongodb://localhost:27017/recordShop`)
-//   .then(() => console.log("We connected to DB "))
-//   .catch((err) => console.log(err));
+// try {
+//   await mongoose.connect(
+//     "mongodb+srv://hiba123:hiba123@cluster0.jz6ge.mongodb.net/hellotest"
+//   );
+//   console.log("connection established successfully!😉");
+// } catch (err) {
+//   console.log(err);
+// }
+mongoose
+  .connect(`mongodb://localhost:27017/recordShop`)
+  .then(() => console.log("We connected to DB "))
+  .catch((err) => console.log(err));
 
 // middleware morgan
 app.use(morgan("tiny"));
