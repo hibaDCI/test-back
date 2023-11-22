@@ -18,10 +18,7 @@ app.use(express.json());
 // connect to MongoDB through mongoose
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/recordShop", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect("mongodb://127.0.0.1:27017/recordShop")
   .then(() => console.log("We connected to DB 😉"))
   .catch((err) => console.log(err));
 
@@ -58,3 +55,8 @@ const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log("the server is running on port 🎉", PORT);
 });
+/* 
+"scripts": {
+    "dev": "set NODE_ENV=development && nodemon app.js",
+    "start": "set NODE_ENV=production && node app.js"
+  }, */
