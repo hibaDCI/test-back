@@ -17,7 +17,9 @@ app.use(express.json());
 
 // connect to MongoDB through mongoose
 try {
-  await mongoose.connect("mongodb://127.0.0.1:27017/testMongodb");
+  await mongoose.connect(
+    "mongodb+srv://hiba123:hiba123@cluster0.jz6ge.mongodb.net/hellotest"
+  );
   console.log("connection established successfully!😉");
 } catch (err) {
   console.log(err);
