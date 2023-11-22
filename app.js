@@ -18,7 +18,7 @@ app.use(express.json());
 // connect to MongoDB through mongoose
 
 mongoose
-  .connect(`${process.env.DB}/recordShop`)
+  .connect(`mongodb://${process.env.DB}/recordShop`)
   .then(() => console.log("We connected to DB 😉"))
   .catch((err) => console.log(err));
 
