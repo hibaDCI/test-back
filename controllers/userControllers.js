@@ -11,16 +11,8 @@ export const login = async (req, res, next) => {
     const foundUser = await User.findOne({
       email: req.body.email,
     });
-    /* 
-    {
-      "firstName": "Syed",
-    "lastName": "Naqvi",
-    "email": "test@gmail.com",
-    "password": "$2b$10$nR/cAZRI7b2z5KOV2ZAZF..dFg97jVz2AUMlOC2je94D9n.lvjnjq",
-    } */
 
     if (foundUser) {
-      //"12345"  === "$2b$10$nR/cAZRI7b2z5KOV2ZAZF..dFg97jVz2AUMlOC2je94D9n.lvjnjq"
       const check = await bcrypt.compare(req.body.password, foundUser.password);
 
       if (check) {
@@ -36,18 +28,19 @@ export const login = async (req, res, next) => {
         //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTUzM2I2NzllMzZlMWUwNzRjNTc1Y2YiLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjk5OTU4NTYzLCJleHAiOjE2OTk5NjIxNjMsImlzcyI6Ik5hcXZpIn0.uAu44QFLVlRQNkHbgwYF9SPCRGQOQwvUO8Ho07Lo1Us
 
         /*       res.send({msg: "welcome back", foundUser, token}); */
-        res.header("token", token).send({success:true, data: foundUser});
+        res.header("token", token).send({success: true, data: foundUser});
         /* res.cookie("token",token).send({msg: "welcome back", foundUser}); */
       } else {
-        res.status(401).send({success:false, message:"password doesn't match!"});
-      
-      /*   res.send({success:false, message:"something wrong"})
+        res
+          .status(401)
+          .send({success: false, message: "password doesn't match!"});
+
+        /*   res.send({success:false, message:"something wrong"})
         res.send({success:true, data:user}) */
       }
-
     } else {
       // if there is no user found, then send this response
-      res.send({success:false, message:"Make sure your email is correct!"});
+      res.send({success: false, message: "Make sure your email is correct!"});
       /* res.json("Make sure your email is correct!") */
     }
   } catch (error) {

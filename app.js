@@ -1,7 +1,7 @@
 // import stuff you need
 import express from "express";
 import mongoose from "mongoose";
-import cors from "cors"
+import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 import morgan from "morgan";
@@ -26,14 +26,22 @@ mongoose
 app.use(morgan("tiny"));
 
 // cors middleware
-app.use(cors({origin:"http://localhost:5173",exposedHeaders:["token"]}))
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://test-frontend-cta4.onrender.com",
+    ],
+    exposedHeaders: ["token"],
+  })
+);
 // the routers (like middleware , to handle the request and send them to specific route )
 // localhost:8000/api/users
 app.use("/api/users", usersRouter);
 // localhost:8000/api/records
-app.use("/api/records", recordsRouter)
+app.use("/api/records", recordsRouter);
 // localhost:8000/api/orders
-app.use("/api/orders", ordersRouter)
+app.use("/api/orders", ordersRouter);
 
 // middleware to handle errors
 

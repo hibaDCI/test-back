@@ -29,9 +29,9 @@ export const userRegisterValidation = [
     .withMessage("you have to pass an email")
     .isEmail()
     .withMessage("you have to pass an accurate email")
-    .trim()
-    // to clean the email before it's sent to db
-    .normalizeEmail(),
+    .trim(),
+  // to clean the email before it's sent to db
+  // .normalizeEmail()
   // to prevent save the same email , to be sure we save unique email
   // .custom(async (value, {req}) => {
   //   const userFound = await User.findOne({email: req.body.email});
