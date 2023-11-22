@@ -16,11 +16,16 @@ const app = express();
 app.use(express.json());
 
 // connect to MongoDB through mongoose
-
-mongoose
-  .connect(`mongodb://${process.env.DB}/recordShop`)
-  .then(() => console.log("We connected to DB 😉"))
-  .catch((err) => console.log(err));
+try {
+  await mongoose.connect("mongodb://127.0.0.1:27017/recordShop");
+  console.log("connection established successfully!😉");
+} catch (err) {
+  console.log(err);
+}
+// mongoose
+//   .connect(`mongodb://${process.env.DB}/recordShop`)
+//   .then(() => console.log("We connected to DB "))
+//   .catch((err) => console.log(err));
 
 // middleware morgan
 app.use(morgan("tiny"));
