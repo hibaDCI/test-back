@@ -35,10 +35,7 @@ app.use(morgan("tiny"));
 // cors middleware
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://test-frontend-cta4.onrender.com",
-    ],
+    origin: ["http://localhost:5173", "https://front-test-gzka.onrender.com"],
     exposedHeaders: ["token"],
   })
 );
