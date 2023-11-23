@@ -14,7 +14,7 @@ const app = express();
 // middleware
 // middleware to parse any incoming json data
 app.use(express.json());
-
+//deploying with a cloud-based database like MongoDB Atlas eliminates issues related to local setup, configuration, or network restrictions that might occur when using a local MongoDB instance.
 // connect to MongoDB through mongoose
 try {
   await mongoose.connect(
